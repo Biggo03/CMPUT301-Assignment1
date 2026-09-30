@@ -1,0 +1,65 @@
+# =========================
+# Android Studio / IntelliJ
+# =========================
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Android Studio generated files
+captures/
+.navigation/
+
+# =========================
+# Gradle
+# =========================
+.gradle/
+**/build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Kotlin generated/cache files
+.kotlin/
+
+# =========================
+# Local machine configuration
+# =========================
+local.properties
+
+# =========================
+# Android generated files
+# =========================
+.externalNativeBuild/
+.cxx/
+
+# =========================
+# Signing / sensitive files
+# =========================
+*.jks
+*.keystore
+keystore.properties
+
+# =========================
+# Built Android packages
+# =========================
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# =========================
+# OS junk
+# =========================
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# =========================
+# Temporary / editor files
+# =========================
+*.log
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
