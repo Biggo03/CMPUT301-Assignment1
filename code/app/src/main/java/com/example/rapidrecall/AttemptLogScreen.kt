@@ -23,38 +23,51 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+// AI assistance: OpenAI, ChatGPT
+// Prompt/subject: Updated AttemptLogScreen to use the shared
+// RapidRecallBackground composable.
+// Date: 2026-10-01
+// Conversation: [link to full ChatGPT conversation]
 @Composable
 fun AttemptLogScreen(
     gameSession: GameSession,
     modifier: Modifier = Modifier
 ) {
-    Column(
+    RapidRecallBackground(
         modifier = modifier
-            .fillMaxSize()
-            .padding(16.dp)
     ) {
-        Text("Attempt Log")
-
-        HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
-
-        LazyColumn(
-            modifier = Modifier.weight(1f)
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp)
         ) {
-            itemsIndexed(gameSession.attempts) { index, attempt ->
-                AttemptRow(
-                    attempt = attempt,
-                    attemptNumber = index + 1
-                )
-                HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
-            }
-        }
+            Text("Attempt Log")
 
-        Button(
-            onClick = {
-                gameSession.changeGameState(GameState.MAIN_MENU)
+            HorizontalDivider(
+                modifier = Modifier.padding(vertical = 8.dp)
+            )
+
+            LazyColumn(
+                modifier = Modifier.weight(1f)
+            ) {
+                itemsIndexed(gameSession.attempts) { index, attempt ->
+                    AttemptRow(
+                        attempt = attempt,
+                        attemptNumber = index + 1
+                    )
+
+                    HorizontalDivider(
+                        modifier = Modifier.padding(vertical = 8.dp)
+                    )
+                }
             }
-        ) {
-            Text("Return to Menu")
+
+            RapidRecallButton(
+                text = "Return to Menu",
+                onClick = {
+                    gameSession.changeGameState(GameState.MAIN_MENU)
+                }
+            )
         }
     }
 }

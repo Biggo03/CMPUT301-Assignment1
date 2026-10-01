@@ -15,35 +15,39 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
+// AI assistance: OpenAI, ChatGPT
+// Prompt/subject: Updated MainMenuScreen to use the shared
+// RapidRecallBackground composable.
+// Date: 2026-10-01
+// Conversation: [link to full ChatGPT conversation]
 @Composable
 fun MainMenuScreen(gameSession: GameSession) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Button(
-            onClick = {
-                gameSession.changeGameState(GameState.IN_GAME)
-            }
+    RapidRecallBackground {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("Start Game")
-        }
+            RapidRecallButton(
+                text = "Start Game",
+                onClick = {
+                    gameSession.changeGameState(GameState.IN_GAME)
+                }
+            )
 
-        Button(
-            onClick = {
-                gameSession.changeGameState(GameState.SUMMARY)
-            }
-        ) {
-            Text("Attempt Summary")
-        }
+            RapidRecallButton(
+                text = "Attempt Summary",
+                onClick = {
+                    gameSession.changeGameState(GameState.SUMMARY)
+                }
+            )
 
-        Button(
-            onClick = {
-                gameSession.changeGameState(GameState.ATTEMPT_LOG)
-            }
-        ) {
-            Text("Attempt Log")
+            RapidRecallButton(
+                text = "Attempt Log",
+                onClick = {
+                    gameSession.changeGameState(GameState.ATTEMPT_LOG)
+                }
+            )
         }
     }
 }

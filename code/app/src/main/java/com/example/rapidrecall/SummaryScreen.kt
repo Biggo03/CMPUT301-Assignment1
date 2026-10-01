@@ -15,28 +15,36 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
+// AI assistance: OpenAI, ChatGPT
+// Prompt/subject: Updated SummaryScreen to use the shared
+// RapidRecallBackground composable.
+// Date: 2026-10-01
+// Conversation: [link to full ChatGPT conversation]
 @Composable
 fun SummaryScreen(
     gameSession: GameSession,
     modifier: Modifier = Modifier
 ) {
-    Column(
-        modifier = modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+    RapidRecallBackground(
+        modifier = modifier
     ) {
-        Text("Attempt Summary")
-
-        Text("Total Attempts: ${gameSession.totalAttempts}")
-        Text("Correct Attempts: ${gameSession.successfulAttempts}")
-        Text("Accuracy: ${gameSession.successRate}%")
-
-        Button(
-            onClick = {
-                gameSession.changeGameState(GameState.MAIN_MENU)
-            }
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("Return to Menu")
+            Text("Attempt Summary")
+
+            Text("Total Attempts: ${gameSession.totalAttempts}")
+            Text("Correct Attempts: ${gameSession.successfulAttempts}")
+            Text("Accuracy: ${gameSession.successRate}%")
+
+            RapidRecallButton(
+                text = "Return to Menu",
+                onClick = {
+                    gameSession.changeGameState(GameState.MAIN_MENU)
+                }
+            )
         }
     }
 }

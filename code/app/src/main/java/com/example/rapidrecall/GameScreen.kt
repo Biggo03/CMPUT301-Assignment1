@@ -64,34 +64,38 @@ fun SetupScreen(
     val sequenceLength = sequenceLengthInput.toIntOrNull()
     val validLength = sequenceLength != null && sequenceLength in 1..10
 
-    Column(
-        modifier = modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+    RapidRecallBackground(
+        modifier = modifier
     ) {
-        Text("Select a sequence length from 1 to 10")
-
-        OutlinedTextField(
-            value = sequenceLengthInput,
-            onValueChange = { newInput ->
-                sequenceLengthInput = newInput
-            },
-            label = {
-                Text("Sequence Length")
-            }
-        )
-
-        Button(
-            onClick = {
-                if (sequenceLength != null) {
-                    round.setupRound(sequenceLength)
-                }
-            },
-            enabled = validLength
+        Column(
+            modifier = modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("Start Round")
+            Text("Select a sequence length from 1 to 10")
+
+            OutlinedTextField(
+                value = sequenceLengthInput,
+                onValueChange = { newInput ->
+                    sequenceLengthInput = newInput
+                },
+                label = {
+                    Text("Sequence Length")
+                }
+            )
+
+            RapidRecallButton(
+                text = "Start Round",
+                onClick = {
+                    if (sequenceLength != null) {
+                        round.setupRound(sequenceLength)
+                    }
+                },
+                enabled = validLength
+            )
         }
     }
+
 }
 
 @Composable
@@ -114,15 +118,19 @@ fun SequenceDisplayScreen(
         round.presentationState = PresentationState.AWAITING_INPUT
     }
 
-    Column(
-        modifier = modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+    RapidRecallBackground(
+        modifier = modifier
     ) {
-        Text(
-            text = sequence[currentIndex].toString(),
-            fontSize = 64.sp
-        )
+        Column(
+            modifier = modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = sequence[currentIndex].toString(),
+                fontSize = 64.sp
+            )
+        }
     }
 }
 
@@ -135,27 +143,30 @@ fun UserInputScreen(
         mutableStateOf("")
     }
 
-    Column(
-        modifier = modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+    RapidRecallBackground(
+        modifier = modifier
     ) {
-        OutlinedTextField(
-            value = userInput,
-            onValueChange = { newInput ->
-                userInput = newInput
-            },
-            label = {
-                Text("Enter Sequence")
-            }
-        )
-
-        Button(
-            onClick = {
-                round.submitInput(userInput)
-            }
+        Column(
+            modifier = modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("Submit")
+            OutlinedTextField(
+                value = userInput,
+                onValueChange = { newInput ->
+                    userInput = newInput
+                },
+                label = {
+                    Text("Enter Sequence")
+                }
+            )
+
+            RapidRecallButton(
+                text ="Submit",
+                onClick = {
+                    round.submitInput(userInput)
+                }
+            )
         }
     }
 }
@@ -171,20 +182,23 @@ fun FinishedScreen(
     gameSession: GameSession,
     modifier: Modifier = Modifier
 ) {
-    Column(
-        modifier = modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+    RapidRecallBackground(
+        modifier = modifier
     ) {
-        Text(round.feedback)
-
-        Button(
-            onClick = {
-                gameSession.logAttempt(round)
-                gameSession.changeGameState(GameState.MAIN_MENU)
-            }
+        Column(
+            modifier = modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("Return to Main Menu")
+            Text(round.feedback)
+
+            RapidRecallButton(
+                text = "Return to Main Menu",
+                onClick = {
+                    gameSession.logAttempt(round)
+                    gameSession.changeGameState(GameState.MAIN_MENU)
+                }
+            )
         }
     }
 }
