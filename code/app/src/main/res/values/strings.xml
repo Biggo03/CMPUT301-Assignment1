@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RapidRecall</string>
+    <string name="title_activity_main_menu_screen">MainMenuScreen</string>
+    <string name="title_activity_game_screen">GameScreen</string>
 </resources>

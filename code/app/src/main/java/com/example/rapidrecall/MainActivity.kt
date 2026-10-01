@@ -1,3 +1,10 @@
+// AI assistance: OpenAI, ChatGPT
+// Prompt/subject: Replaced the default Android Compose template with
+// top-level RapidRecall application scaffolding that selects screens
+// based on the current GameSession state.
+// Date: 2026-09-30
+// Conversation: [link to full ChatGPT conversation]
+
 package com.example.rapidrecall
 
 import android.os.Bundle
@@ -7,21 +14,28 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.rapidrecall.ui.theme.RapidRecallTheme
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         setContent {
             RapidRecallTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                val gameSession = remember {
+                    GameSession()
+                }
+
+                Scaffold(
+                    modifier = Modifier.fillMaxSize()
+                ) { innerPadding ->
+                    RapidRecallApp(
+                        gameSession = gameSession,
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -30,18 +44,39 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+// AI assistance: OpenAI, ChatGPT
+// Prompt/subject: Generated the top-level RapidRecall application state
+// scaffolding and updated it to create one remembered Round for each game.
+// Date: 2026-09-30
+// Conversation: [link to full ChatGPT conversation]
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+fun RapidRecallApp(
+    gameSession: GameSession,
+    modifier: Modifier = Modifier
+) {
+    when (gameSession.gameState) {
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    RapidRecallTheme {
-        Greeting("Android")
+        GameState.MAIN_MENU -> {
+            MainMenuScreen(gameSession)
+        }
+
+        GameState.IN_GAME -> {
+            val round = remember {
+                Round()
+            }
+
+            GameScreen(
+                round = round,
+                gameSession = gameSession
+            )
+        }
+
+        GameState.ATTEMPT_LOG -> {
+            // AttemptLogScreen(gameSession)
+        }
+
+        GameState.SUMMARY -> {
+            // SummaryScreen(gameSession)
+        }
     }
 }
