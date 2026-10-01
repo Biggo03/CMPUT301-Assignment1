@@ -99,7 +99,7 @@ fun SequenceDisplayScreen(
     round: Round,
     modifier: Modifier = Modifier
 ) {
-    val sequence = round.targetSequence?.sequence ?: return
+    val sequence = round.attempt?.sequence?.sequence ?: return
 
     var currentIndex by remember(sequence) {
         mutableIntStateOf(0)

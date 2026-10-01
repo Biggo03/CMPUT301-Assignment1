@@ -72,11 +72,11 @@ fun RapidRecallApp(
         }
 
         GameState.ATTEMPT_LOG -> {
-            // AttemptLogScreen(gameSession)
+            AttemptLogScreen(gameSession)
         }
 
         GameState.SUMMARY -> {
-            // SummaryScreen(gameSession)
+            SummaryScreen(gameSession)
         }
     }
 }

@@ -1,6 +1,6 @@
 // AI assistance: OpenAI, ChatGPT
-// Prompt/subject: Updated GameSession so gameState uses Compose-observable
-// state, allowing UI recomposition when the application state changes.
+// Prompt/subject: Updated GameSession to log the completed Attempt stored
+// within a Round and update session statistics.
 // Date: 2026-09-30
 // Conversation: [link to full ChatGPT conversation]
 
@@ -33,28 +33,20 @@ class GameSession {
         gameState = newState
     }
 
-    // AI assistance: OpenAI, ChatGPT
-    // Prompt/subject: Updated GameSession logging so a completed Round is
-    // converted into an Attempt and added to the session statistics.
-    // Date: 2026-09-30
-    // Conversation: [link to full ChatGPT conversation]
     fun logAttempt(round: Round) {
-        val sequence = requireNotNull(round.targetSequence) {
-            "A completed round must contain a target sequence."
+        val attempt = requireNotNull(round.attempt) {
+            "A completed round must contain an attempt."
         }
 
-        val attempt = Attempt(
-            sequence = sequence,
-            userAttempt = round.currentUserInput,
-            success = round.success,
-            timestamp = System.currentTimeMillis()
-        )
+        val success = requireNotNull(attempt.success) {
+            "Attempt must be completed before it can be logged."
+        }
 
         attempts.add(attempt)
 
         totalAttempts = attempts.size
 
-        if (attempt.success) {
+        if (success) {
             successfulAttempts++
         } else {
             failedAttempts++

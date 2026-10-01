@@ -1,6 +1,6 @@
 // AI assistance: OpenAI, ChatGPT
-// Prompt/subject: Generated the Round class state structure and methods for
-// round setup and submitting/comparing user input.
+// Prompt/subject: Updated Round to contain an Attempt object rather than
+// separately storing the target sequence, user input, and success result.
 // Date: 2026-09-30
 // Conversation: [link to full ChatGPT conversation]
 
@@ -20,29 +20,29 @@ enum class PresentationState {
 class Round {
 
     var selectedSequenceLength: Int? = null
-    var targetSequence: Sequence? = null
+    var attempt: Attempt? = null
 
     var presentationState by mutableStateOf(PresentationState.SETUP)
-    var currentUserInput by mutableStateOf("")
     var feedback by mutableStateOf("")
-
-    var success: Boolean = false
 
     fun setupRound(sequenceLength: Int) {
         selectedSequenceLength = sequenceLength
-        targetSequence = Sequence(sequenceLength)
+
+        attempt = Attempt(
+            sequence = Sequence(sequenceLength)
+        )
+
         presentationState = PresentationState.SHOWING_SEQUENCE
     }
 
     fun submitInput(input: String) {
-        val sequence = requireNotNull(targetSequence) {
-            "Target sequence must exist before submitting input."
+        val currentAttempt = requireNotNull(attempt) {
+            "Attempt must exist before submitting input."
         }
 
-        currentUserInput = input
-        success = sequence.compare(input)
+        currentAttempt.completeAttempt(input)
 
-        feedback = if (success) {
+        feedback = if (currentAttempt.success == true) {
             "Success, sequence guessed correctly!"
         } else {
             "Failure of grand proportions, sequence guessed incorrectly"
