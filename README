@@ -1,0 +1,57 @@
+# RapidRecall
+
+RapidRecall is an Android memory game developed for CMPUT 301 using Kotlin and Jetpack Compose.
+
+The user selects a sequence length from 1 to 10 digits. The application displays the randomly generated digits one at a time, after which the user attempts to reproduce the sequence. Each completed attempt is logged and contributes to the session summary.
+
+## Features
+
+- Selectable sequence length from 1–10 digits
+- Timed digit-by-digit sequence presentation
+- User sequence input and correctness feedback
+- Attempt logging
+- Session statistics including:
+  - Total attempts
+  - Successful attempts
+  - Failed attempts
+  - Overall accuracy
+- Attempt log containing:
+  - Attempt number
+  - Sequence length
+  - Target sequence
+  - User input
+  - Success/failure
+  - Timestamp
+
+## AI Use Disclosure
+
+OpenAI ChatGPT was used during the development of this assignment.
+
+AI assistance was used extensively as a development and learning aid, including:
+
+- Reviewing the assignment requirements and permitted AI-use policy
+- Discussing and refining the object-oriented architecture
+- Reviewing the responsibilities and relationships of `Sequence`, `Attempt`, `Round`, and `GameSession`
+- Explaining Kotlin and Jetpack Compose concepts such as:
+  - `val` versus `var`
+  - Compose state and recomposition
+  - `mutableStateOf`
+  - `remember`
+  - `LaunchedEffect`
+  - Composable screen organization
+- Generating portions of Kotlin/Jetpack Compose code used in the application
+- Assisting with UI organization and styling
+- Assisting with debugging and refactoring as the object model changed
+
+AI-generated code incorporated into the submitted project is identified with comments in the relevant source files.
+
+The developer reviewed, modified, tested, and takes responsibility for all submitted code and documentation.
+
+### AI Tool
+
+- **Company:** OpenAI
+- **Tool:** ChatGPT
+- **Dates used:** September 30 – October 2, 2026
+- **Conversation:** [INSERT LINK TO FULL CHATGPT CONVERSATION]
+
+The linked conversation contains the full development discussion, including prompts, generated code, explanations, design decisions, and revisions.

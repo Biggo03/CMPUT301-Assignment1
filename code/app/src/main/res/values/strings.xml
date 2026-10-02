@@ -2,4 +2,8 @@
     <string name="app_name">RapidRecall</string>
     <string name="title_activity_main_menu_screen">MainMenuScreen</string>
     <string name="title_activity_game_screen">GameScreen</string>
+    <string name="title_activity_summary_screen">SummaryScreen</string>
+    <string name="title_activity_attempt_log_screen">AttemptLogScreen</string>
+    <string name="title_activity_rapid_recall_button">RapidRecallButton</string>
+    <string name="title_activity_rapid_recall_background">RapidRecallBackground</string>
 </resources>

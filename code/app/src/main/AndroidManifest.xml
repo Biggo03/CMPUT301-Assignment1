@@ -35,6 +35,30 @@
             android:label="@string/title_activity_game_screen"
             android:theme="@style/Theme.RapidRecall"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".SummaryScreen"
+            android:exported="false"
+            android:label="@string/title_activity_summary_screen"
+            android:theme="@style/Theme.RapidRecall"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".AttemptLogScreen"
+            android:exported="false"
+            android:label="@string/title_activity_attempt_log_screen"
+            android:theme="@style/Theme.RapidRecall"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".RapidRecallButton"
+            android:exported="false"
+            android:label="@string/title_activity_rapid_recall_button"
+            android:theme="@style/Theme.RapidRecall"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".RapidRecallBackground"
+            android:exported="false"
+            android:label="@string/title_activity_rapid_recall_background"
+            android:theme="@style/Theme.RapidRecall"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
