@@ -2,7 +2,7 @@
 // Prompt/subject: Generated the GameScreen state dispatcher, SetupScreen,
 // SequenceDisplayScreen, and UserInputScreen for collecting and submitting guesses.
 // Date: 2026-09-30
-// Conversation: [link to full ChatGPT conversation]
+// Conversation: https://chatgpt.com/share/6ac00678-87d4-83e8-b2d2-97a0757adc8e
 
 package com.example.rapidrecall
 
@@ -98,6 +98,11 @@ fun SetupScreen(
 
 }
 
+// AI assistance: OpenAI, ChatGPT
+// Prompt/subject: Updated SequenceDisplayScreen timing to display a
+// one-second blank interval between sequence digits.
+// Date: 2026-10-02
+// Conversation: https://chatgpt.com/share/6ac00678-87d4-83e8-b2d2-97a0757adc8e
 @Composable
 fun SequenceDisplayScreen(
     round: Round,
@@ -109,10 +114,21 @@ fun SequenceDisplayScreen(
         mutableIntStateOf(0)
     }
 
+    var showDigit by remember(sequence) {
+        mutableStateOf(true)
+    }
+
     LaunchedEffect(sequence) {
         for (index in sequence.indices) {
             currentIndex = index
+            showDigit = true
+
             delay(2000)
+
+            if (index != sequence.lastIndex) {
+                showDigit = false
+                delay(500)
+            }
         }
 
         round.presentationState = PresentationState.AWAITING_INPUT
@@ -127,7 +143,11 @@ fun SequenceDisplayScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = sequence[currentIndex].toString(),
+                text = if (showDigit) {
+                    sequence[currentIndex].toString()
+                } else {
+                    ""
+                },
                 fontSize = 64.sp
             )
         }
@@ -175,7 +195,7 @@ fun UserInputScreen(
 // Prompt/subject: Added FinishedScreen for displaying round feedback,
 // logging the completed attempt, and returning to the main menu.
 // Date: 2026-09-30
-// Conversation: [link to full ChatGPT conversation]
+// Conversation: https://chatgpt.com/share/6ac00678-87d4-83e8-b2d2-97a0757adc8e
 @Composable
 fun FinishedScreen(
     round: Round,

@@ -2,7 +2,7 @@
 // Prompt/subject: Generated a reusable Compose button that changes
 // container color while being pressed.
 // Date: 2026-10-01
-// Conversation: [link to full ChatGPT conversation]
+// Conversation: https://chatgpt.com/share/6ac00678-87d4-83e8-b2d2-97a0757adc8e
 
 package com.example.rapidrecall
 

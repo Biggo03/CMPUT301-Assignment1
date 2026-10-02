@@ -3,7 +3,7 @@
 // top-level RapidRecall application scaffolding that selects screens
 // based on the current GameSession state.
 // Date: 2026-09-30
-// Conversation: [link to full ChatGPT conversation]
+// Conversation: https://chatgpt.com/share/6ac00678-87d4-83e8-b2d2-97a0757adc8e
 
 package com.example.rapidrecall
 
@@ -48,7 +48,7 @@ class MainActivity : ComponentActivity() {
 // Prompt/subject: Generated the top-level RapidRecall application state
 // scaffolding and updated it to create one remembered Round for each game.
 // Date: 2026-09-30
-// Conversation: [link to full ChatGPT conversation]
+// Conversation: https://chatgpt.com/share/6ac00678-87d4-83e8-b2d2-97a0757adc8e
 @Composable
 fun RapidRecallApp(
     gameSession: GameSession,

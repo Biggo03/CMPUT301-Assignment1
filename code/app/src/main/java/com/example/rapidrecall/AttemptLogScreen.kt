@@ -2,7 +2,7 @@
 // Prompt/subject: Generated the AttemptLogScreen using a LazyColumn to
 // display sequence length, target sequence, user input, success, and timestamp.
 // Date: 2026-10-01
-// Conversation: [link to full ChatGPT conversation]
+// Conversation: https://chatgpt.com/share/6ac00678-87d4-83e8-b2d2-97a0757adc8e
 
 package com.example.rapidrecall
 
@@ -27,7 +27,7 @@ import java.util.Locale
 // Prompt/subject: Updated AttemptLogScreen to use the shared
 // RapidRecallBackground composable.
 // Date: 2026-10-01
-// Conversation: [link to full ChatGPT conversation]
+// Conversation: https://chatgpt.com/share/6ac00678-87d4-83e8-b2d2-97a0757adc8e
 @Composable
 fun AttemptLogScreen(
     gameSession: GameSession,
@@ -103,7 +103,7 @@ fun AttemptRow(
 // Prompt/subject: Added formatting for Attempt timestamps using
 // YYYY-MM-DDTHH:MM:SS-style date/time display.
 // Date: 2026-10-01
-// Conversation: [link to full ChatGPT conversation]
+// Conversation: https://chatgpt.com/share/6ac00678-87d4-83e8-b2d2-97a0757adc8e
 fun formatTimestamp(timestamp: Long): String {
     val formatter = SimpleDateFormat(
         "yyyy-MM-dd'T'HH:mm:ss",

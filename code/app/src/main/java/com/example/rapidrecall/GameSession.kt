@@ -2,7 +2,7 @@
 // Prompt/subject: Updated GameSession to log the completed Attempt stored
 // within a Round and update session statistics.
 // Date: 2026-09-30
-// Conversation: [link to full ChatGPT conversation]
+// Conversation: https://chatgpt.com/share/6ac00678-87d4-83e8-b2d2-97a0757adc8e
 
 package com.example.rapidrecall
 
@@ -17,6 +17,11 @@ enum class GameState {
     SUMMARY
 }
 
+// This is the top level class that models the whole session. It essentially stores all info that needs
+// to be persistant throughout runtime, and handles changing the state of the game based on user input.
+// so it could also be seen as a bit of a controller.
+
+// This provided a clean way to have all the top level information, and interface with the composable functions.
 class GameSession {
 
     var gameState by mutableStateOf(GameState.MAIN_MENU)

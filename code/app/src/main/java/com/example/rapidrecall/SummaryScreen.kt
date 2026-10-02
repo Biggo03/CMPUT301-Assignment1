@@ -2,7 +2,7 @@
 // Prompt/subject: Generated the attempt summary screen displaying total attempts,
 // successful attempts, overall accuracy, and a button to return to the main menu.
 // Date: 2026-10-01
-// Conversation: [link to full ChatGPT conversation]
+// Conversation: https://chatgpt.com/share/6ac00678-87d4-83e8-b2d2-97a0757adc8e
 
 package com.example.rapidrecall
 
@@ -19,7 +19,7 @@ import androidx.compose.ui.Modifier
 // Prompt/subject: Updated SummaryScreen to use the shared
 // RapidRecallBackground composable.
 // Date: 2026-10-01
-// Conversation: [link to full ChatGPT conversation]
+// Conversation: https://chatgpt.com/share/6ac00678-87d4-83e8-b2d2-97a0757adc8e
 @Composable
 fun SummaryScreen(
     gameSession: GameSession,

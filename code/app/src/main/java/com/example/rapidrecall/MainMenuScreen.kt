@@ -2,7 +2,7 @@
 // Prompt/subject: Generated the MainMenuScreen composable with buttons
 // for starting a game, viewing the attempt summary, and viewing the attempt log.
 // Date: 2026-09-30
-// Conversation: [link to full ChatGPT conversation]
+// Conversation: https://chatgpt.com/share/6ac00678-87d4-83e8-b2d2-97a0757adc8e
 
 package com.example.rapidrecall
 
@@ -19,7 +19,7 @@ import androidx.compose.ui.Modifier
 // Prompt/subject: Updated MainMenuScreen to use the shared
 // RapidRecallBackground composable.
 // Date: 2026-10-01
-// Conversation: [link to full ChatGPT conversation]
+// Conversation: https://chatgpt.com/share/6ac00678-87d4-83e8-b2d2-97a0757adc8e
 @Composable
 fun MainMenuScreen(gameSession: GameSession) {
     RapidRecallBackground {
